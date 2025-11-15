@@ -35,13 +35,13 @@
     {% embed '@Gui/Partials/widget.twig' with { widget_title: 'General' | trans } %}
         {% block widget_content %}
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Created date' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.createdAt | formatDateTime }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Created date' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.createdAt | formatDateTime }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Status' | trans }}</b></div>
-                <div class="col-xs-10">
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Status' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">
                     <span class="label {{ statusClassLabelMapping[merchantRegistrationRequest.status] | default }}">
                         {{ merchantRegistrationRequest.status | trans }}
                     </span>
@@ -49,8 +49,8 @@
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Store' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.store.name }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Store' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.store.name }}</div>
             </div>
         {% endblock %}
     {% endembed %}
@@ -58,38 +58,38 @@
     {% embed '@Gui/Partials/widget.twig' with { widget_title: 'Company Information' | trans } %}
         {% block widget_content %}
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Company name' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.companyName }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Company name' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.companyName }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Registration number' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.registrationNumber }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Registration number' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.registrationNumber }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Street' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.address1 }}</div>
+                <div class="col-sm-2"><b>{{ 'Street' | trans }}</b></div>
+                <div class="col-sm-10">{{ merchantRegistrationRequest.address1 }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'House number' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.address2 }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'House number' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.address2 }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'ZIP code' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.zipCode }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'ZIP code' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.zipCode }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'City' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.city }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'City' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.city }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Country' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.country.name }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Country' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.country.name }}</div>
             </div>
         {% endblock %}
     {% endembed %}
@@ -97,33 +97,33 @@
     {% embed '@Gui/Partials/widget.twig' with { widget_title: 'Contact Person' | trans } %}
         {% block widget_content %}
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Title' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.contactPersonTitle }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Title' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.contactPersonTitle }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'First name' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.contactPersonFirstName }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'First name' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.contactPersonFirstName }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Last name' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.contactPersonLastName }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Last name' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.contactPersonLastName }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Phone' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.contactPersonPhone }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Phone' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.contactPersonPhone }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Email' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.email }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Email' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.email }}</div>
             </div>
 
             <div class="row form-group">
-                <div class="col-xs-2"><b>{{ 'Role' | trans }}</b></div>
-                <div class="col-xs-10">{{ merchantRegistrationRequest.contactPersonRole }}</div>
+                <div class="col-xs-2 col-sm-2"><b>{{ 'Role' | trans }}</b></div>
+                <div class="col-xs-10 col-sm-10">{{ merchantRegistrationRequest.contactPersonRole }}</div>
             </div>
         {% endblock %}
     {% endembed %}
