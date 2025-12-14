@@ -92,6 +92,25 @@ class MerchantRegistrationRequestFacadeTest extends Unit
         $this->assertCount(0, $merchantRegistrationResponseTransfer->getErrors());
     }
 
+    public function testCreateMerchantRegistrationRequestInDmsOffModeSuccess(): void
+    {
+        if ($this->tester->isDynamicStoreEnabled()) {
+            $this->markTestSkipped('This test is only for non-dynamic store mode.');
+        }
+
+        // Arrange
+        $merchantRegistrationResponseTransfer = $this->createMerchantRegistrationRequestTransfer();
+        $merchantRegistrationResponseTransfer->getStore()->setIdStore(null);
+
+        // Act
+        $merchantRegistrationResponseTransfer = $this->tester->getFacade()
+            ->createMerchantRegistrationRequest($merchantRegistrationResponseTransfer);
+
+        // Assert
+        $this->assertTrue($merchantRegistrationResponseTransfer->getIsSuccess());
+        $this->assertCount(0, $merchantRegistrationResponseTransfer->getErrors());
+    }
+
     public function testCreateMerchantRegistrationRequestErrorEmailWithCompanyNameExistInMerchantRegistrationRequestTable(): void
     {
         // Arrange

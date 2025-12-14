@@ -37,6 +37,7 @@ use Spryker\Zed\MerchantRegistrationRequest\Dependency\Facade\MerchantRegistrati
 use Spryker\Zed\MerchantRegistrationRequest\Dependency\Service\MerchantRegistrationRequestToUtilTextServiceInterface;
 use Spryker\Zed\MerchantRegistrationRequest\Dependency\Service\MerchantRegistrationRequestToUtilUuidGeneratorServiceInterface;
 use Spryker\Zed\MerchantRegistrationRequest\MerchantRegistrationRequestDependencyProvider;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 /**
  * @method \Spryker\Zed\MerchantRegistrationRequest\Persistence\MerchantRegistrationRequestEntityManagerInterface getEntityManager()
@@ -50,6 +51,7 @@ class MerchantRegistrationRequestBusinessFactory extends AbstractBusinessFactory
         return new MerchantRegistrationRequestCreator(
             $this->getEntityManager(),
             $this->getCountryFacade(),
+            $this->getStoreFacade(),
             $this->getConfig(),
             $this->getMerchantRegistrationRequestValidators(),
         );
@@ -176,5 +178,10 @@ class MerchantRegistrationRequestBusinessFactory extends AbstractBusinessFactory
     public function getUtilUuidGeneratorService(): MerchantRegistrationRequestToUtilUuidGeneratorServiceInterface
     {
         return $this->getProvidedDependency(MerchantRegistrationRequestDependencyProvider::SERVICE_UTIL_UUID_GENERATOR);
+    }
+
+    public function getStoreFacade(): StoreFacadeInterface
+    {
+        return $this->getProvidedDependency(MerchantRegistrationRequestDependencyProvider::FACADE_STORE);
     }
 }

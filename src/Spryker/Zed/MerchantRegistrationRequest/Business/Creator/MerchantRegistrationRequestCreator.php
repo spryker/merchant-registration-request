@@ -12,6 +12,7 @@ use Generated\Shared\Transfer\MerchantRegistrationResponseTransfer;
 use Spryker\Zed\MerchantRegistrationRequest\Dependency\Facade\MerchantRegistrationRequestToCountryFacadeInterface;
 use Spryker\Zed\MerchantRegistrationRequest\MerchantRegistrationRequestConfig;
 use Spryker\Zed\MerchantRegistrationRequest\Persistence\MerchantRegistrationRequestEntityManagerInterface;
+use Spryker\Zed\Store\Business\StoreFacadeInterface;
 
 class MerchantRegistrationRequestCreator implements MerchantRegistrationRequestCreatorInterface
 {
@@ -21,6 +22,7 @@ class MerchantRegistrationRequestCreator implements MerchantRegistrationRequestC
     public function __construct(
         protected MerchantRegistrationRequestEntityManagerInterface $entityManager,
         protected MerchantRegistrationRequestToCountryFacadeInterface $countryFacade,
+        protected StoreFacadeInterface $storeFacade,
         protected MerchantRegistrationRequestConfig $merchantRegistrationRequestConfig,
         protected array $merchantRegistrationRequestValidators
     ) {
@@ -47,6 +49,13 @@ class MerchantRegistrationRequestCreator implements MerchantRegistrationRequestC
         $merchantRegistrationRequestTransfer->setCountry(
             $this->countryFacade->getCountryByIso2Code($merchantRegistrationRequestTransfer->getIso2CodeOrFail()),
         );
+
+        // For dynamic store off mode
+        if ($merchantRegistrationRequestTransfer->getStoreOrFail()->getIdStore() === null) {
+            $storeTransfer = $this->storeFacade->getStoreByName($merchantRegistrationRequestTransfer->getStoreOrFail()->getNameOrFail());
+            $merchantRegistrationRequestTransfer->setStore($storeTransfer);
+        }
+
         $createdMerchantRegistrationRequestTransfer = $this->entityManager->createMerchantRegistrationRequest($merchantRegistrationRequestTransfer);
 
         return $merchantRegistrationResponseTransfer->setMerchantRegistrationRequest($createdMerchantRegistrationRequestTransfer);

@@ -59,6 +59,8 @@ class MerchantRegistrationRequestDependencyProvider extends AbstractBundleDepend
      */
     public const FACADE_LOCALE = 'FACADE_LOCALE';
 
+    public const string FACADE_STORE = 'FACADE_STORE';
+
     /**
      * @var string
      */
@@ -72,12 +74,13 @@ class MerchantRegistrationRequestDependencyProvider extends AbstractBundleDepend
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
+        $container = $this->addCommentFacade($container);
         $container = $this->addCountryFacade($container);
+        $container = $this->addLocaleFacade($container);
         $container = $this->addMerchantFacade($container);
         $container = $this->addMerchantUserFacade($container);
-        $container = $this->addLocaleFacade($container);
+        $container = $this->addStoreFacade($container);
         $container = $this->addUtilTextService($container);
-        $container = $this->addCommentFacade($container);
         $container = $this->addUtilUuidGeneratorService($container);
 
         return $container;
@@ -176,6 +179,15 @@ class MerchantRegistrationRequestDependencyProvider extends AbstractBundleDepend
     {
         $container->set(static::SERVICE_UTIL_UUID_GENERATOR, function (Container $container) {
             return new MerchantRegistrationRequestToUtilUuidGeneratorServiceBridge($container->getLocator()->utilUuidGenerator()->service());
+        });
+
+        return $container;
+    }
+
+    protected function addStoreFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_STORE, function (Container $container) {
+            return $container->getLocator()->store()->facade();
         });
 
         return $container;
