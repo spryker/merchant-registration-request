@@ -74,7 +74,7 @@ abstract class AbstractMerchantRegistrationRequestController extends AbstractCon
     }
 
     /**
-     * @param list<\Generated\Shared\Transfer\ErrorTransfer> $errorTransfers
+     * @param array<\Generated\Shared\Transfer\ErrorTransfer> $errorTransfers
      *
      * @return void
      */
